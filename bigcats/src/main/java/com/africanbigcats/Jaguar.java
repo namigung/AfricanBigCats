@@ -27,6 +27,7 @@ public class Jaguar extends Panthera {
         s += "latitude: " + latitude();
         s += ", ";
         s += "fur: " + fur();
+        s += ", ";
         s += "sleepsInTrees:" + getSleepInTrees();
         s += " }";
         return s;

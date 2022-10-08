@@ -185,7 +185,7 @@ and added.
 
     //finds big cat
     public void findBigCat(LinkedList<Panthera> catList){
-        System.out.println("Enter the name of the cat or what you think the name of cat is: ");
+        System.out.print("Enter the name of the cat or what you think the name of cat is: ");
         boolean bigCatFound = false;
         String name = input.nextLine();
         for (int i = 0; i < catList.size(); i++){
@@ -195,6 +195,7 @@ and added.
                 bigCatFound = true;
             }
         }
+        System.out.println();
         if (bigCatFound == false){
             System.out.print("We could not find this Big Cat");
         }
