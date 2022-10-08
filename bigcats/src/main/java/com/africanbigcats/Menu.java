@@ -61,6 +61,7 @@ and added.
                 executeCreate(catList);
                 break;
             case 'd':
+                deleteBigCat(catList);
                 break;
             case 'f':
                 break;
@@ -139,7 +140,7 @@ and added.
         for (int i = 0; i < catList.size(); i++){
             String bigcat = catList.get(i).name();
             if (bigcat.equals(name)){
-                System.out.print("Error: this big cat already exists");
+                System.out.println("Error: this big cat already exists");
                 pass = false;
             }
         }
@@ -166,8 +167,19 @@ and added.
         }
         System.out.println();
     }
-    /*
-        TIP:
-        Additional methods and functionality need to be added to this class.
-    */
+    
+    //removes big cat from list
+    public void deleteBigCat(LinkedList<Panthera> catList){
+        System.out.println("What cat do you want to remove (enter name)?");
+        String name = input.nextLine();
+        for (int i = 0; i < catList.size(); i++){
+            String bigcat = catList.get(i).name();
+            if (bigcat.equals(name)){
+                catList.remove(i);
+            }
+        }
+
+        System.out.println(name + " has been removed");
+    }
+    
 }
