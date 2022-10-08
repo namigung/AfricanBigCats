@@ -6,7 +6,7 @@ public class Panthera extends PantheraGPS {
     /*
         TIP:
         Students will need to add additional attributes and methods to complete 
-this classes
+        this classes
         implementation.
      */
     // constructor

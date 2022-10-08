@@ -64,6 +64,7 @@ and added.
                 deleteBigCat(catList);
                 break;
             case 'f':
+                findBigCat(catList);
                 break;
             case 'l':
                 executeList(catList);
@@ -160,7 +161,7 @@ and added.
         if (catList.size() > 0) {
             for (Integer i = 0; i < catList.size(); i++) {
                 cat = catList.get(i);
-                System.out.println(cat);
+                System.out.println("#" + i + cat);
             }
         } else {
             System.out.println("There are no African Big Cats. :(");
@@ -180,6 +181,23 @@ and added.
         }
 
         System.out.println(name + " has been removed");
+    }
+
+    //finds big cat
+    public void findBigCat(LinkedList<Panthera> catList){
+        System.out.println("Enter the name of the cat or what you think the name of cat is: ");
+        boolean bigCatFound = false;
+        String name = input.nextLine();
+        for (int i = 0; i < catList.size(); i++){
+            String bigcat = catList.get(i).name();
+            if (bigcat.indexOf(name) != -1){
+                System.out.print(catList.get(i));
+                bigCatFound = true;
+            }
+        }
+        if (bigCatFound == false){
+            System.out.print("We could not find this Big Cat");
+        }
     }
     
 }

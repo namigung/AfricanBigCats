@@ -3,7 +3,7 @@ package com.africanbigcats;
  * Panthera base class that simulates GPS information
  */
 public class Jaguar extends Panthera {
-    boolean sleepsInTrees;
+    private boolean sleepsInTrees;
     // constructor
     public Jaguar(String name) {
         // call the super-class (parent) to instatiate it
@@ -27,10 +27,15 @@ public class Jaguar extends Panthera {
         s += "latitude: " + latitude();
         s += ", ";
         s += "fur: " + fur();
+        s += "sleepsInTrees:" + getSleepInTrees();
         s += " }";
         return s;
     }
     public String fur() {
         return "spots";
+    }
+    
+    public boolean getSleepInTrees(){
+        return sleepsInTrees;
     }
 }
