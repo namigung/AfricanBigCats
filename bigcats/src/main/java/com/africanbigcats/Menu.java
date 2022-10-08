@@ -23,6 +23,8 @@ public class Menu {
 and added to the menu.
         */
         printCommand('c',"[C]reates a big cat");
+        printCommand('d', "[D]eletes a big cat");
+        printCommand('f', "[F]inds a Big Cat");
         printCommand('l',"[L]ists all big Cats");
         printCommand('q',"[Q]uits");
         printLine();
@@ -58,6 +60,10 @@ and added.
             case 'c':
                 executeCreate(catList);
                 break;
+            case 'd':
+                break;
+            case 'f':
+                break;
             case 'l':
                 executeList(catList);
                 break;
@@ -88,17 +94,32 @@ and added.
         System.out.println();
     }
     public Panthera getNewCat(String name) {
-        
         /*
             TIP:
             In this area of the code, students need to get input from the user for 
-the type of cat 
+            the type of cat 
             and create the correct type.
-            Currently, the code always create a Tiger.  But, support for Lions and 
-Jaguars
+            Currently, the code always create a Tiger.  But, support for Lions and Jaguars
             also needs to be added.
         */
-        Panthera result = new Tiger(name);
+        float catNum = 0;
+        Panthera result;
+        System.out.print("Enter 1 for Tiger, 2 for Lion, 3 for Jaguar: ");
+        String val = input.nextLine();
+        catNum = Float.valueOf(val);
+        if (catNum == 1){
+            result = new Tiger(name);
+        }
+        else if (catNum == 2){
+            result = new Lion(name);
+        }
+        else if (catNum == 3){
+            result = new Jaguar(name); 
+        }
+        else{
+            System.out.print("Error: invalid big cat type. Creating a tiger named" + name);
+            result = new Tiger(name);
+        }
         return result;
     }
     // create a cat, if it's unique
@@ -108,14 +129,25 @@ Jaguars
         System.out.print("Enter a name for the big cat to create: ");
         String name = input.nextLine();
         System.out.println();
-        /*
+          /*
             TIP:
             In this area of the code, students would need to add in checking if the
-cat name
+            cat name
             already exists in order to prevent duplicates
         */
-        Panthera cat = getNewCat(name);
-        catList.add(cat);
+        boolean pass = true;
+        for (int i = 0; i < catList.size(); i++){
+            String bigcat = catList.get(i).name();
+            if (bigcat.equals(name)){
+                System.out.print("Error: this big cat already exists");
+                pass = false;
+            }
+        }
+        if (pass == true){
+            Panthera cat = getNewCat(name);
+            catList.add(cat);
+            System.out.println("Status: " + name + " has been added");
+        }
     }
     // list all big cats 
     public void executeList(LinkedList<Panthera> catList) {
