@@ -32,6 +32,8 @@ public class Tiger extends Panthera {
         s += " }";
         return s;
     }
+
+    //roar method
     public String fur() {
         return "stripes";
     }

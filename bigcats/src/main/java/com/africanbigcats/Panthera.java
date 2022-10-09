@@ -45,14 +45,17 @@ public class Panthera extends PantheraGPS {
         return s;
     }
 
+    //roar method
     public String roar(){
         return "Rrrrrrrrroooooooaaaaarrrrr!";
     }
 
+    //weight getter method
     public int getWeight() {
         return weight;
     }
 
+    //randomly generates a speed from between 0 and 50
     public float speed(){
         speed = (int)(Math.random()*(51));
         return speed;

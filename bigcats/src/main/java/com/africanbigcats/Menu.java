@@ -137,6 +137,7 @@ and added.
             cat name
             already exists in order to prevent duplicates
         */
+        //checks for duplicates
         boolean pass = true;
         for (int i = 0; i < catList.size(); i++){
             String bigcat = catList.get(i).name();
@@ -145,6 +146,7 @@ and added.
                 pass = false;
             }
         }
+        //if no duplicates found, prints that it has been added to list
         if (pass == true){
             Panthera cat = getNewCat(name);
             catList.add(cat);
@@ -161,7 +163,8 @@ and added.
         if (catList.size() > 0) {
             for (Integer i = 0; i < catList.size(); i++) {
                 cat = catList.get(i);
-                System.out.println("#" + i + cat);
+                //prints a numbered list
+                System.out.println("#" + (i+1) + cat);
             }
         } else {
             System.out.println("There are no African Big Cats. :(");
@@ -173,6 +176,7 @@ and added.
     public void deleteBigCat(LinkedList<Panthera> catList){
         System.out.println("What cat do you want to remove (enter name)?");
         String name = input.nextLine();
+        //iterates to find the name of the cat and removes it
         for (int i = 0; i < catList.size(); i++){
             String bigcat = catList.get(i).name();
             if (bigcat.equals(name)){
@@ -188,6 +192,7 @@ and added.
         System.out.print("Enter the name of the cat or what you think the name of cat is: ");
         boolean bigCatFound = false;
         String name = input.nextLine();
+        //iterates to see if the entered name is in the list
         for (int i = 0; i < catList.size(); i++){
             String bigcat = catList.get(i).name();
             if (bigcat.indexOf(name) != -1){
@@ -196,6 +201,7 @@ and added.
             }
         }
         System.out.println();
+        //if there was no cat found print message
         if (bigCatFound == false){
             System.out.print("We could not find this Big Cat");
         }

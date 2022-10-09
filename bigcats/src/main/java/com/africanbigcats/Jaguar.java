@@ -34,10 +34,12 @@ public class Jaguar extends Panthera {
         s += " }";
         return s;
     }
+    //fur method
     public String fur() {
         return "spots";
     }
     
+    //sleepInTrees getter method
     public boolean getSleepInTrees(){
         return sleepsInTrees;
     }

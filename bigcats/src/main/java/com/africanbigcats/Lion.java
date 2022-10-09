@@ -32,6 +32,7 @@ public class Lion extends Panthera {
         s += " }";
         return s;
     }
+    //fur method
     public String fur() {
         return "mane";
     }
