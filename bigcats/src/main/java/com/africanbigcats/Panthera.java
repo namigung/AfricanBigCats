@@ -57,7 +57,7 @@ public class Panthera extends PantheraGPS {
 
     //randomly generates a speed from between 0 and 50
     public float speed(){
-        speed = (int)(Math.random()*(51));
+        speed = (float)(Math.random()*(51));
         return speed;
 
     }
