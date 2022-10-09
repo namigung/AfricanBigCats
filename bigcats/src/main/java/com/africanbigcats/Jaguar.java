@@ -26,9 +26,11 @@ public class Jaguar extends Panthera {
         s += ", ";
         s += "latitude: " + latitude();
         s += ", ";
-        s += "fur: " + fur();
+        s += "weight: " + getWeight();
         s += ", ";
-        s += "sleepsInTrees:" + getSleepInTrees();
+        s += "speed: " + this.speed();
+        s += ", ";
+        s += "fur: " + fur();
         s += " }";
         return s;
     }
