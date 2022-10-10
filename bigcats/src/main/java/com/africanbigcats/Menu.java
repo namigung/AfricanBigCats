@@ -180,7 +180,7 @@ and added.
     
     //removes big cat from list
     public void deleteBigCat(LinkedList<Panthera> catList){
-        System.out.println("What cat do you want to remove (enter name)?");
+        System.out.print("What cat do you want to remove (enter name)?");
         String name = input.nextLine();
         //iterates to find the name of the cat and removes it
         for (int i = 0; i < catList.size(); i++){
@@ -189,7 +189,7 @@ and added.
                 catList.remove(i);
             }
         }
-
+        System.out.println();
         System.out.println(name + " has been removed");
     }
 
