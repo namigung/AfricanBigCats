@@ -104,22 +104,28 @@ and added.
             Currently, the code always create a Tiger.  But, support for Lions and Jaguars
             also needs to be added.
         */
-        float catNum = 0;
         Panthera result;
-        System.out.print("Enter 1 for Tiger, 2 for Lion, 3 for Jaguar: ");
-        String val = input.nextLine();
-        catNum = Float.valueOf(val);
-        if (catNum == 1){
-            result = new Tiger(name);
+        try{
+            int catNum = 0;
+            System.out.print("Enter 1 for Tiger, 2 for Lion, 3 for Jaguar: ");
+            String val = input.nextLine();
+            catNum = Integer.valueOf(val);
+            if (catNum == 1){
+                result = new Tiger(name);
+            }
+            else if (catNum == 2){
+                result = new Lion(name);
+            }
+            else if (catNum == 3){
+                result = new Jaguar(name); 
+            }
+            else{
+                System.out.print("Error: invalid big cat type. Creating a tiger named " + name);
+                result = new Tiger(name);
+            }
         }
-        else if (catNum == 2){
-            result = new Lion(name);
-        }
-        else if (catNum == 3){
-            result = new Jaguar(name); 
-        }
-        else{
-            System.out.print("Error: invalid big cat type. Creating a tiger named" + name);
+        catch (NumberFormatException e){
+            System.out.println("Error: invalid big cat type. Creating a tiger named " + name);
             result = new Tiger(name);
         }
         return result;
