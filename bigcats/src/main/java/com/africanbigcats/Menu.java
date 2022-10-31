@@ -27,6 +27,7 @@ and added to the menu.
         printCommand('f', "[F]inds a Big Cat");
         printCommand('l',"[L]ists all big Cats");
         printCommand('r', "[R}isk Report");
+        printCommand('w', "[W]arning Report");
         printCommand('q',"[Q]uits");
         printLine();
     }
@@ -75,6 +76,9 @@ and added.
                 break;
             case 'r':
                 riskReport(catList);
+                break;
+            case 'w':
+                warningReport(catList);
                 break;
             default:
                 System.out.println("ERROR: Unknown commmand");
@@ -246,12 +250,52 @@ and added.
 
         if (foundcat2 && foundcat1){
         //calculates distance between big cats
-        double distanceBetween = Math.sqrt(Math.pow((cat2long - cat1long), 2) + Math.pow((cat2lat - cat1lat), 2));
-        System.out.println(distanceBetween);
+        double distanceBetween = calcDistance(cat1long, cat1lat, cat2long, cat2lat);
+        System.out.println("The distance between " + cat1 + " and " + cat2 + " is " + distanceBetween );
         }
         else{
             System.out.print("cat cannot be found");
         }
     }
     
+    public void warningReport(LinkedList<Panthera> catList){
+        //prompts user for their longitude/latitude
+        System.out.print("What is your longitude: ");
+        String num1 = input.nextLine();
+        Float yourLong = Float.valueOf(num1);
+        System.out.print("What is your latitude: ");
+        String num2 = input.nextLine();
+        Float yourLat = Float.valueOf(num2);
+
+        //sets the minimum distance
+        float catLong = catList.get(0).longitude();
+        float catLat = catList.get(0).latitude();
+        double distanceBetween = calcDistance(catLong, catLat, yourLong, yourLat);
+        System.out.print(distanceBetween);
+        double minDistance = distanceBetween;
+        String closestCat = catList.get(0).name();
+
+        for (int i = 0 ; i < catList.size(); i++){
+            catLong = catList.get(i).longitude();
+            catLat = catList.get(i).latitude();
+            distanceBetween = calcDistance(catLong, catLat, yourLong, yourLat);
+            System.out.println(distanceBetween + " " + catList.get(i).name());
+            if (distanceBetween < minDistance){
+                minDistance = distanceBetween;
+                closestCat = catList.get(i).name();
+            }
+        }
+    
+        System.out.println("The closest cat is " + closestCat + " which is at distance of " + minDistance);
+    }
+
+    public double calcDistance( float longC, float latC, float longP, float latP){
+        float longDiff = longP - longC;
+        float latDiff = latP - latC;
+        double insideSqrtRt = longDiff * longDiff + latDiff * latDiff;
+        double distanceBetween = Math.sqrt(insideSqrtRt); 
+        return distanceBetween;
+    }
 }
+
+
