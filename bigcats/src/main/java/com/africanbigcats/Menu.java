@@ -26,6 +26,7 @@ and added to the menu.
         printCommand('d', "[D]eletes a big cat");
         printCommand('f', "[F]inds a Big Cat");
         printCommand('l',"[L]ists all big Cats");
+        printCommand('r', "[R}isk Report");
         printCommand('q',"[Q]uits");
         printLine();
     }
@@ -71,6 +72,9 @@ and added.
                 break;
             case 'q':
                 executeQuit();
+                break;
+            case 'r':
+                riskReport(catList);
                 break;
             default:
                 System.out.println("ERROR: Unknown commmand");
@@ -210,6 +214,43 @@ and added.
         //if there was no cat found print message
         if (bigCatFound == false){
             System.out.print("We could not find this Big Cat");
+        }
+    }
+
+    public void riskReport(LinkedList<Panthera> catList){
+        System.out.print("Enter the name of the first cat: ");
+        String cat1 = input.nextLine();
+        System.out.print("Enter name of second cat: ");
+        String cat2 = input.nextLine();
+        //stores cats longitude and latitude
+        float cat1long =0;
+        float cat1lat = 0;
+        float cat2long = 0;
+        float cat2lat =0;
+        //used to print error message if the cats don't exist in the list
+        boolean foundcat1 = false;
+        boolean foundcat2 = false;
+
+        for (int i = 0; i < catList.size(); i++){
+            if (catList.get(i).name().equals(cat1)){
+                cat1long = catList.get(i).longitude();
+                cat1lat = catList.get(i).latitude();
+                foundcat1 = true;
+            }
+            if(catList.get(i).name().equals(cat2)){
+                cat2long = catList.get(i).longitude();
+                cat2lat = catList.get(i).latitude();
+                foundcat2 = true;
+            }
+        }
+
+        if (foundcat2 && foundcat1){
+        //calculates distance between big cats
+        double distanceBetween = Math.sqrt(Math.pow((cat2long - cat1long), 2) + Math.pow((cat2lat - cat1lat), 2));
+        System.out.println(distanceBetween);
+        }
+        else{
+            System.out.print("cat cannot be found");
         }
     }
     
