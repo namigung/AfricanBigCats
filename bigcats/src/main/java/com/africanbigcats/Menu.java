@@ -210,7 +210,7 @@ and added.
         for (int i = 0; i < catList.size(); i++){
             String bigcat = catList.get(i).name();
             if (bigcat.indexOf(name) != -1){
-                System.out.print(catList.get(i));
+                System.out.println(catList.get(i));
                 bigCatFound = true;
             }
         }
@@ -254,7 +254,7 @@ and added.
         System.out.println("The distance between " + cat1 + " and " + cat2 + " is " + distanceBetween );
         }
         else{
-            System.out.print("cat cannot be found");
+            System.out.println("cat cannot be found");
         }
     }
     
@@ -271,7 +271,6 @@ and added.
         float catLong = catList.get(0).longitude();
         float catLat = catList.get(0).latitude();
         double distanceBetween = calcDistance(catLong, catLat, yourLong, yourLat);
-        System.out.print(distanceBetween);
         double minDistance = distanceBetween;
         String closestCat = catList.get(0).name();
 
@@ -279,7 +278,6 @@ and added.
             catLong = catList.get(i).longitude();
             catLat = catList.get(i).latitude();
             distanceBetween = calcDistance(catLong, catLat, yourLong, yourLat);
-            System.out.println(distanceBetween + " " + catList.get(i).name());
             if (distanceBetween < minDistance){
                 minDistance = distanceBetween;
                 closestCat = catList.get(i).name();
